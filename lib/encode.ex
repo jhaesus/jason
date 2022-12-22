@@ -256,12 +256,6 @@ defmodule Jason.Encode do
     end
   end
 
-  defp struct(value, _escape, _encode_map, Decimal) do
-    # silence the xref warning
-    decimal = Decimal
-    [?", decimal.to_string(value, :normal), ?"]
-  end
-
   defp struct(value, escape, encode_map, Fragment) do
     %{encode: encode} = value
     encode.({escape, encode_map})
